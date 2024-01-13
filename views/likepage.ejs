@@ -1,0 +1,26 @@
+<% include ./partials/header.ejs %>
+
+<div class="w-full min-h-screen bg-zinc-900 text-white py-5">
+    <div class="flex justify-between items-center pb-4 border-b-[2px] border-solid border-zinc-700 px-4">
+      <a class="text-sm text-blue-500" href="/profile"><i class="ri-arrow-left-s-line"></i> profile</a>
+      <h2 class="leading-none text-sm">Upload Post</h2>
+      <a class="text-sm" href="/feed"><i class="ri-home-line"></i> home</a>
+    </div>
+    <div class="posts w-[100vw] flex gap-1 py-2 mt-2 flex-wrap overflow-hidden">
+        <%user.likes.reverse().forEach(function(post){%>
+        <div class="post w-[100vw] gap-x-8 items-center border-b-[2px] rounded-full border-solid border-zinc-700 flex h-24 overflow-hidden">
+          <img
+            class="w-20 h-20 ml-[10vw] rounded-full object-cover"
+            src="/images/uploads/<%= post.picture %>"
+            alt=""
+          />
+          <div class="leading-[20px] ">
+            <h3 class="text-2xl capitalize"><%= post.username%></h3>
+            <p><%= post.caption%></p>
+          </div>
+        </div>
+        <%})%>
+      </div>
+  </div>
+
+<% include ./partials/footer.ejs %>
